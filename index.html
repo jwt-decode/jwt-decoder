@@ -9,7 +9,8 @@
 <body>
     <h1>JWT decoder Installed</h1>
     <div class="subtitle">
-      Click the settings icon (1) in the top-right corner of your browser. <br>
+      Open <b>Developer Tools</b> and go to <a href="#step4">step (4)</a>, or <br>
+      click the settings icon (1) in the top-right corner of your browser. <br>
        Then click 'More tools' (2), and select 'Developer tools' (3):
     </div>
     <div class="image-area">
@@ -18,6 +19,37 @@
         src="minimalistic browser page + settings.png"
         alt="how to find dev tools" />
     </div>
+    <div class="subtitle" id="step4">
+      Click the arrow to show more options (4), then click 'JWT' (5):
+    </div>
+    <div class="image-area">
+      <img
+      class="image"
+      src="second image.png"
+      alt="how to find dev tools" />
+  </div>
+  <div style="margin-top: 32px;">
+    <button id="jwt-request-btn" class="jwt-btn">Send JWT Request</button>
+    <div id="jwt-response" style="margin-top: 16px; color: #333;"></div>
+  </div>
+  <script>
+    document.getElementById('jwt-request-btn').addEventListener('click', async function() {
+      const responseDiv = document.getElementById('jwt-response');
+
+      try {
+        const res = await fetch('https://httpbin.org/get', {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXNzYWdlIjoiQ29uZ3JhdHVsYXRpb25zISJ9.-2h6q1laS7yzhdKXkyMUgzATLQbs0V16JLuMbITs41U'
+          }
+        });
+        const data = await res.json();
+      } catch (e) {
+      }
+    });
+  </script>
+  
    arrow create by Creative Stall Premium
+   
 </body>
 </html>
