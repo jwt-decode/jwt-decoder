@@ -35,6 +35,10 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.jwt-button-container{
+  align-items: self-start;
+}
+
 .jwt-btn {
   background: #007bff;
   color: #fff;
