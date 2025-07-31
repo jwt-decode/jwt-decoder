@@ -10,25 +10,25 @@
 <body>
     <h1>JWT Decoder Installed</h1>
     <div class="subtitle">
-      Open <b>Developer Tools</b> by pressing hot keys (1)</a>:
+      Open <b>Developer Tools</b> in your browser by following the arrows:
     </div>
     <div class="image-area">
         <img
         class="image"
-        src="open_dev_tools.png"
+        src="first_image_arrows.png"
         alt="how to find dev tools" />
     </div>
     <div class="subtitle" id="step4">
-      Click the arrow to show more options (2), then click 'JWT Decoder' (3):
+      Find <b>JWT Decoder</b> under <b>Developer Tools</b>:
     </div>
     <div class="image-area">
       <img
       class="image"
-      src="find_jwt_decoder.png"
+      src="second_image_arrow.png"
       alt="how to find dev tools" />
   </div>
   <div class="jwt-button-container">
-    <img src ="4 step.bmp"/>
+    <img class ="arrow-image" src ="arrow.bmp"/>
     <button id="jwt-request-btn" class="jwt-btn">Send Request with JWT</button>
   </div>
   <script>
@@ -36,7 +36,7 @@
       const responseDiv = document.getElementById('jwt-response');
 
       try {
-        const res = await fetch('https://httpbin.org/get', {
+        const res = await fetch(document.location, {
           method: 'GET',
           headers: {
             'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30'
@@ -48,7 +48,7 @@
     });
   </script>
   
-  Arrows created by Creative Stall Premium
+  Arrows created by vectaicon
    
 </body>
 </html>

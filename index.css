@@ -35,8 +35,12 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.arrow-image {
+  transform: translateY(25px);
+}
+
 .jwt-button-container{
-  align-items: self-start;
+  transform: translateY(-50px);
 }
 
 .jwt-btn {
