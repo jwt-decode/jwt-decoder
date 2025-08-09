@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="index.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f995c072-1ee2-40e4-9fb1-21fa50adebdc"></script>
   <title>JWT Decoder Installed</title>
 </head>
 <body>
@@ -12,6 +13,10 @@
     <div class="subtitle">
       Open <b>Developer Tools</b> in your browser by following the arrows:
     </div>
+    Easy JWT Decoder — works in one click, right in your browser.
+    Fast JWT Decoder for developers. Works in browser, nothing is saved.
+    One-click JWT tool in browser. Made for developers, keeps your tokens private.
+
     <div class="image-area">
         <img
         class="image"
@@ -33,7 +38,6 @@
   </div>
   <script>
     document.getElementById('jwt-request-btn').addEventListener('click', async function() {
-      const responseDiv = document.getElementById('jwt-response');
 
       try {
         const res = await fetch(document.location, {
