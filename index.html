@@ -33,21 +33,66 @@
     <img class ="arrow-image" src ="arrow.bmp"/>
     <button id="jwt-request-btn" class="jwt-btn">See How JWT Decoding Works</button>
   </div>
-  <script>
-    document.getElementById('jwt-request-btn').addEventListener('click', async function() {
+    <div id="popup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Open JWT Decoder</h2>
+            <p>Please open <b>JWT Decoder</b> to see how decoding works.</p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
 
-      try {
-        const res = await fetch(document.location, {
-          method: 'GET',
-          headers: {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30'
-          }
+    <script>
+        var isJwtDecoderOpened = false;
+
+        function isDevToolsOpen() {
+            const threshold = 150;
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+            return widthThreshold || heightThreshold;
+        }
+
+        window.addEventListener('resize', () => {
+            if (isDevToolsOpen()) {
+                isJwtDecoderOpened = true;
+            } else {
+                isJwtDecoderOpened = false;
+            }
         });
-        const data = await res.json();
-      } catch (e) {
-      }
-    });
-  </script>
+
+        const openBtn = document.getElementById('jwt-request-btn');
+        const popup = document.getElementById('popup');
+        const closeBtn = document.getElementById('closePopup');
+
+        openBtn.addEventListener('click', async function() {
+            if (isJwtDecoderOpened) {
+                try {
+                    const res = await fetch(document.location, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30'
+                        }
+                    });
+                    const data = await res.json();
+                } catch (e) {
+                    console.error(e);
+                }
+            } else {
+                popup.style.display = 'block';
+            }
+        });
+
+        // Close popup
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // Click outside to close
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
   
   Arrows created by vectaicon
    
